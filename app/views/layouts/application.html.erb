@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ua">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= yield :title %> | Kava</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= stylesheet_link_tag 'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #e0f7fa, #ce93d8);
+      background-size: cover;
+      color: white;
+      min-height: 100vh; /* Ensure it covers the entire viewport */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    .header {
+      background-color: rgba(0, 0, 0, 0.5); 
+      padding: 20px;
+      width: 80%;
+      max-width: 800px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+    }
+    .button-container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .button {
+      background-color: #64b5f6;
+      color: white;
+      border: none;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.3s;
+      border-radius: 5px;
+    }
+    .button:hover {
+      background-color: #42a5f5;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+       <li><%= link_to 'Головна', root_path %></li>
+       <li><%= link_to 'Контакти', contact_path %></li>
+       <li><%= link_to 'Меню', menu_path %></li>
+      </ul> 
+      <ul>
+        <% if user_signed_in? %>
+          <li><%= link_to 'Вихід', logout_path, method: :delete %></li>
+        <% else %>
+          <li><%= link_to 'Реєстрація', signup_path %></li>
+          <li><%= link_to 'Вхід', login_path %></li>
+        <% end %>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="content">
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+
+    <%= yield %> 
+  </div>
+</body>
+</html>

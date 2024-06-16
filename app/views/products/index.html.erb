@@ -1,0 +1,21 @@
+<h1>Products</h1>
+
+<% @products.each do |product| %>
+  <div>
+    <h2><%= product.name %></h2>
+    <p><%= product.description.truncate(100) %></p>
+    <p><%= number_to_currency(product.price) %></p>
+    <%= link_to 'View Details', product_path(product), class: 'btn btn-primary' %>
+    <% if user_signed_in? %>
+      <%= link_to 'Add to Cart', add_to_cart_product_path(product), method: :post, class: 'btn btn-success' %>
+    <% end %>
+    <% if current_user&.admin? %>
+      <%= link_to 'Edit', edit_product_path(product), class: 'btn btn-warning' %>
+      <%= link_to 'Delete', product_path(product), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+    <% end %>
+  </div>
+<% end %>
+
+<% if current_user&.admin? %>
+  <%= link_to 'New Product', new_product_path, class: 'btn btn-primary' %>
+<% end %>

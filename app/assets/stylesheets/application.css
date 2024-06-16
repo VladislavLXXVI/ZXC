@@ -1,0 +1,37 @@
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px; /* Увеличим padding для лучшего визуального восприятия */
+    position: fixed; /* Закрепим навигацию сверху */
+    top: 0;
+    left: 0;
+    width: 100%; /* Расширим навигацию на всю ширину */
+    z-index: 1000; /* Обеспечим навигации приоритет над другим содержимым */
+}
+
+header nav {
+    display: flex;
+    justify-content: space-between; /* Для разделения элементов навигации по краям */
+    align-items: center; /* Вертикальное выравнивание элементов */
+}
+
+header nav ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    margin: 0; /* Уберем отступы для лучшего выравнивания */
+}
+
+header nav ul li {
+    margin: 0 15px;
+}
+
+header nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+header nav ul li a:hover {
+    text-decoration: underline;
+}
